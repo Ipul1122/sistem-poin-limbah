@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+@theme {
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+
+    --color-bg-primary: #FAF9F6;
+    --color-bg-card: #FFFFFF;
+    --color-border-card: #E5E7EB;
+
+    --color-brand-orange: #F97316;
+    --color-brand-amber: #F59E0B;
+    --color-brand-dark: #1F2937;
+
+    --color-status-success: #10B981;
+    --color-status-info: #3B82F6;
+    --color-status-warning: #F59E0B;
+    --color-status-danger: #EF4444;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FAF9F6;
+    color: #1F2937;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Gradient buttons & badges */
+.btn-gradient {
+    background: linear-gradient(135deg, #F97316 0%, #F59E0B 100%);
+    color: #FFFFFF;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(135deg, #EA580C 0%, #D97706 100%);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+}
+
+.badge-gradient {
+    background: linear-gradient(135deg, #F97316 0%, #F59E0B 100%);
+    color: #FFFFFF;
+}
