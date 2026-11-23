@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-[#FAF9F6] text-[#1F2937] min-h-screen flex items-center justify-center p-4 font-['Poppins']">
+<body class="bg-[#FFF5F7] text-[#1F2937] min-h-screen flex items-center justify-center p-4 font-['Poppins']">
 
     <div class="max-w-md w-full bg-white rounded-2xl border border-[#E5E7EB] shadow-xl p-8 text-center">
         <div class="w-16 h-16 mx-auto mb-4 bg-red-100 text-[#EF4444] rounded-2xl flex items-center justify-center">
@@ -28,17 +28,17 @@
         <div class="space-y-2">
             @if(Auth::check() && Auth::user()->isAdmin())
                 <a href="{{ route('admin.dashboard') }}"
-                   class="inline-block w-full py-2.5 px-4 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F97316] to-[#F59E0B] shadow hover:opacity-95 transition">
+                   class="inline-block w-full py-2.5 px-4 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F472B6] to-[#FB7185] shadow hover:opacity-95 transition">
                     Kembali ke Dashboard Admin
                 </a>
             @elseif(Auth::check() && Auth::user()->isPeserta())
                 <a href="{{ route('peserta.dashboard') }}"
-                   class="inline-block w-full py-2.5 px-4 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F97316] to-[#F59E0B] shadow hover:opacity-95 transition">
+                   class="inline-block w-full py-2.5 px-4 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F472B6] to-[#FB7185] shadow hover:opacity-95 transition">
                     Kembali ke Dashboard Peserta
                 </a>
             @else
                 <a href="{{ route('login') }}"
-                   class="inline-block w-full py-2.5 px-4 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F97316] to-[#F59E0B] shadow hover:opacity-95 transition">
+                   class="inline-block w-full py-2.5 px-4 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F472B6] to-[#FB7185] shadow hover:opacity-95 transition">
                     Halaman Login
                 </a>
             @endif

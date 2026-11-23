@@ -19,7 +19,7 @@
             <!-- Filter Status -->
             <div>
                 <label class="block font-semibold text-gray-600 mb-1">Status Verifikasi</label>
-                <select name="status" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F97316]">
+                <select name="status" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#EC4899]">
                     <option value="">Semua Status</option>
                     <option value="pending" {{ $status === 'pending' ? 'selected' : '' }}>Pending (Menunggu)</option>
                     <option value="approved" {{ $status === 'approved' ? 'selected' : '' }}>Approved (Disetujui)</option>
@@ -30,7 +30,7 @@
             <!-- Filter Kategori -->
             <div>
                 <label class="block font-semibold text-gray-600 mb-1">Kategori Limbah</label>
-                <select name="category_id" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F97316]">
+                <select name="category_id" class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#EC4899]">
                     <option value="">Semua Kategori</option>
                     @foreach($categories as $cat)
                         <option value="{{ $cat->id }}" {{ $categoryId == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
@@ -42,7 +42,7 @@
             <div>
                 <label class="block font-semibold text-gray-600 mb-1">Cari Peserta</label>
                 <input type="text" name="search" value="{{ $search }}" placeholder="Nama atau email..."
-                       class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F97316]">
+                       class="w-full px-3 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#EC4899]">
             </div>
 
             <div class="flex items-end space-x-2">
@@ -63,6 +63,7 @@
                 <thead class="bg-gray-50 text-[11px] uppercase tracking-wider text-gray-500 font-semibold border-b border-[#E5E7EB]">
                     <tr>
                         <th class="px-6 py-4">ID / Tanggal</th>
+                        <th class="px-6 py-4">Foto</th>
                         <th class="px-6 py-4">Peserta</th>
                         <th class="px-6 py-4">Jenis Limbah</th>
                         <th class="px-6 py-4">Jumlah / Berat</th>
@@ -74,10 +75,21 @@
                 </thead>
                 <tbody class="divide-y divide-[#E5E7EB]">
                     @forelse($transactions as $tx)
-                        <tr class="hover:bg-orange-50/30 transition">
+                        <tr class="hover:bg-pink-50/30 transition">
                             <td class="px-6 py-4 font-mono text-xs text-gray-700">
                                 <span class="font-bold text-[#1F2937]">#{{ $tx->id }}</span>
                                 <span class="block text-[11px] text-gray-400">{{ $tx->created_at->format('d/m/Y H:i') }}</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                @if($tx->image_path)
+                                    <a href="{{ $tx->image_url }}" target="_blank" class="block w-12 h-12 rounded-xl overflow-hidden border border-pink-200 hover:scale-105 transition shadow-xs">
+                                        <img src="{{ $tx->image_url }}" alt="Foto #{{ $tx->id }}" class="w-full h-full object-cover">
+                                    </a>
+                                @else
+                                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gray-100 text-gray-400 text-xs">
+                                        -
+                                    </span>
+                                @endif
                             </td>
                             <td class="px-6 py-4">
                                 <span class="font-semibold text-gray-800 block">{{ $tx->user->name }}</span>
@@ -85,7 +97,7 @@
                             </td>
                             <td class="px-6 py-4 font-medium text-gray-800">
                                 <span class="inline-flex items-center space-x-1.5">
-                                    <span class="w-2 h-2 rounded-full {{ $tx->category->name === 'Botol' ? 'bg-blue-500' : 'bg-orange-500' }}"></span>
+                                    <span class="w-2 h-2 rounded-full {{ $tx->category->name === 'Botol' ? 'bg-blue-500' : 'bg-pink-500' }}"></span>
                                     <span>{{ $tx->category->name }}</span>
                                 </span>
                             </td>
@@ -133,14 +145,14 @@
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{ route('admin.transactions.show', $tx) }}"
-                                   class="inline-block px-3 py-1.5 rounded-xl font-heading font-bold text-xs {{ $tx->status === 'pending' ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-xs hover:opacity-95' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }} transition">
+                                   class="inline-block px-3 py-1.5 rounded-xl font-heading font-bold text-xs {{ $tx->status === 'pending' ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-xs hover:opacity-95' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }} transition">
                                     {{ $tx->status === 'pending' ? 'Verifikasi' : 'Detail' }}
                                 </a>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="px-6 py-12 text-center text-gray-400 text-xs">
+                            <td colspan="9" class="px-6 py-12 text-center text-gray-400 text-xs">
                                 Tidak ada data transaksi limbah yang sesuai filter.
                             </td>
                         </tr>

@@ -7,7 +7,7 @@
 <div class="max-w-4xl mx-auto space-y-6">
     <!-- Back Button -->
     <div>
-        <a href="{{ route('admin.transactions.index') }}" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-gray-500 hover:text-[#F97316] transition">
+        <a href="{{ route('admin.transactions.index') }}" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-gray-500 hover:text-[#EC4899] transition">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
@@ -16,8 +16,8 @@
     </div>
 
     <!-- Details Card -->
-    <div class="bg-white rounded-2xl border border-[#E5E7EB] shadow-xs overflow-hidden">
-        <div class="p-6 md:p-8 border-b border-[#E5E7EB] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div class="bg-white rounded-2xl border border-[#FCE7F3] shadow-xs overflow-hidden">
+        <div class="p-6 md:p-8 border-b border-[#FCE7F3] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
                 <div class="flex items-center space-x-3">
                     <h1 class="font-heading font-extrabold text-2xl text-[#1F2937]">Transaksi #{{ $transaction->id }}</h1>
@@ -46,7 +46,7 @@
                 <div class="text-xs">
                     <span class="font-bold text-gray-800 block">{{ $transaction->user->name }}</span>
                     <span class="text-gray-500">{{ $transaction->user->email }}</span>
-                    <span class="text-[11px] text-orange-600 font-semibold block">Saldo: {{ $transaction->user->total_points }} Poin</span>
+                    <span class="text-[#EC4899] font-semibold block">Saldo: {{ $transaction->user->total_points }} Poin</span>
                 </div>
             </div>
         </div>
@@ -78,13 +78,43 @@
                     $calcService = app(\App\Services\PointCalculationService::class);
                     $basePoints = $calcService->calculateBasePoints($transaction->category, $transaction->quantity_or_weight);
                 @endphp
-                <div class="bg-orange-50/50 p-4 rounded-xl border border-orange-200">
-                    <span class="block text-orange-600 text-xs font-medium">Kalkulasi Poin Dasar (Base)</span>
-                    <span class="font-heading font-extrabold text-2xl text-[#F97316] mt-1 block">
+                <div class="bg-pink-50/50 p-4 rounded-xl border border-pink-200">
+                    <span class="block text-pink-600 text-xs font-medium">Kalkulasi Poin Dasar (Base)</span>
+                    <span class="font-heading font-extrabold text-2xl text-[#EC4899] mt-1 block">
                         {{ $basePoints }} Poin
                     </span>
                     <span class="text-[11px] text-gray-500">Sebelum bonus grade kelayakan</span>
                 </div>
+            </div>
+
+            <!-- Foto Fisik Limbah Section -->
+            <div class="p-4 rounded-2xl bg-gray-50 border border-gray-200">
+                <span class="block text-xs font-semibold text-gray-700 mb-2">Foto Fisik Limbah dari Peserta:</span>
+                @if($transaction->image_path)
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                        <a href="{{ $transaction->image_url }}" target="_blank" class="block group relative overflow-hidden rounded-xl border-2 border-pink-300 shadow-sm max-w-xs">
+                            <img src="{{ $transaction->image_url }}" alt="Foto Limbah #{{ $transaction->id }}" class="h-44 w-auto object-cover group-hover:scale-105 transition duration-200">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs font-medium transition">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                                Perbesar Foto
+                            </div>
+                        </a>
+                        <div class="text-xs text-gray-600 space-y-1">
+                            <p class="font-semibold text-gray-800">Pemeriksaan Kondisi Fisik:</p>
+                            <p class="text-gray-500">Perhatikan kebersihan, tutup/label botol, atau kondisi penyok pada kaleng untuk menentukan Grade kelayakan yang objektif.</p>
+                        </div>
+                    </div>
+                @else
+                    <div class="p-4 rounded-xl bg-white border border-dashed border-gray-300 text-center text-xs text-gray-400">
+                        <svg class="w-8 h-8 mx-auto text-gray-300 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <span>Peserta tidak melampirkan foto fisik pada setoran ini.</span>
+                    </div>
+                @endif
             </div>
 
             <!-- Notes by participant -->
@@ -123,7 +153,7 @@
                 </div>
             @else
                 <!-- Verification Form for Admin -->
-                <div class="border-t border-[#E5E7EB] pt-6">
+                <div class="border-t border-[#FCE7F3] pt-6">
                     <h2 class="font-heading font-bold text-lg text-[#1F2937] mb-2">Formulir Verifikasi & Penilaian Kelayakan</h2>
                     <p class="text-xs text-gray-500 mb-6">
                         Pilih Grade kelayakan fisik limbah yang disetor untuk menentukan bonus poin, atau tolak jika tidak sesuai syarat.
@@ -137,7 +167,7 @@
                             <label class="block text-xs font-semibold text-gray-700 mb-2">Tentukan Grade Kelayakan <span class="text-red-500">*</span></label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                                 @foreach($grades as $gr)
-                                    <label class="p-4 rounded-xl border-2 cursor-pointer transition grade-card hover:border-[#F97316] {{ $loop->first ? 'border-[#F97316] bg-orange-50/40' : 'border-[#E5E7EB]' }}">
+                                    <label class="p-4 rounded-xl border-2 cursor-pointer transition grade-card hover:border-[#EC4899] {{ $loop->first ? 'border-[#EC4899] bg-pink-50/40' : 'border-gray-200' }}">
                                         <input type="radio" name="grade_id" value="{{ $gr->id }}"
                                                data-code="{{ $gr->grade_code }}"
                                                data-bonus="{{ $gr->bonus_point }}"
@@ -151,7 +181,7 @@
                                                 Grade {{ $gr->grade_code }}
                                             </span>
                                             <span class="block font-semibold text-xs text-gray-800">{{ $gr->label }}</span>
-                                            <span class="block font-heading font-bold text-sm text-[#F97316] mt-1">+{{ $gr->bonus_point }} Poin</span>
+                                            <span class="block font-heading font-bold text-sm text-[#EC4899] mt-1">+{{ $gr->bonus_point }} Poin</span>
                                         </div>
                                     </label>
                                 @endforeach
@@ -159,7 +189,7 @@
                         </div>
 
                         <!-- Live Calculation Preview -->
-                        <div class="p-4 rounded-xl bg-orange-50/50 border border-orange-200 text-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div class="p-4 rounded-xl bg-pink-50/50 border border-pink-200 text-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                             <div>
                                 <span class="text-gray-500">Formula Kalkulasi Poin:</span>
                                 <div class="font-medium text-gray-800 mt-0.5">
@@ -168,7 +198,7 @@
                             </div>
                             <div class="text-right">
                                 <span class="text-xs text-gray-500">Total Poin yang Akan Diterima:</span>
-                                <div class="font-heading font-extrabold text-2xl text-[#F97316]">
+                                <div class="font-heading font-extrabold text-2xl text-[#EC4899]">
                                     <span id="calc_total">{{ $basePoints + 4 }}</span> Poin
                                 </div>
                             </div>
@@ -179,11 +209,11 @@
                             <label for="notes" class="block text-xs font-semibold text-gray-700 mb-1">Catatan Verifikasi (Wajib jika menolak setoran)</label>
                             <textarea id="notes" name="notes" rows="2"
                                       placeholder="Contoh: Kondisi botol bersih, label telah dilepas. / Alasan penolakan jika ditolak."
-                                      class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent transition"></textarea>
+                                      class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#EC4899] focus:border-transparent transition"></textarea>
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="flex items-center justify-end space-x-3 pt-4 border-t border-[#E5E7EB]">
+                        <div class="flex items-center justify-end space-x-3 pt-4 border-t border-gray-200">
                             <button type="submit" name="action" value="reject"
                                     onclick="return confirm('Apakah Anda yakin ingin menolak transaksi ini? Pastikan Anda telah mengisi alasan pada kolom catatan.');"
                                     class="px-5 py-2.5 rounded-xl border border-red-300 text-xs font-semibold text-red-600 hover:bg-red-50 transition">
@@ -191,7 +221,7 @@
                             </button>
 
                             <button type="submit" name="action" value="approve"
-                                    class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F97316] to-[#F59E0B] hover:opacity-95 shadow transition">
+                                    class="px-6 py-2.5 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F472B6] to-[#FB7185] hover:opacity-95 shadow transition">
                                 Setujui & Tambah Poin Saldo Peserta
                             </button>
                         </div>
@@ -214,8 +244,8 @@
             radios.forEach(r => {
                 const card = r.closest('.grade-card');
                 if (r.checked) {
-                    card.classList.add('border-[#F97316]', 'bg-orange-50/40');
-                    card.classList.remove('border-[#E5E7EB]');
+                    card.classList.add('border-[#EC4899]', 'bg-pink-50/40');
+                    card.classList.remove('border-gray-200');
 
                     const bonus = parseInt(r.dataset.bonus) || 0;
                     if (calcBonus && calcTotal) {
@@ -223,8 +253,8 @@
                         calcTotal.textContent = basePoints + bonus;
                     }
                 } else {
-                    card.classList.remove('border-[#F97316]', 'bg-orange-50/40');
-                    card.classList.add('border-[#E5E7EB]');
+                    card.classList.remove('border-[#EC4899]', 'bg-pink-50/40');
+                    card.classList.add('border-gray-200');
                 }
             });
         }

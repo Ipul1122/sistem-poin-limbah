@@ -17,6 +17,7 @@ class PointRedemption extends Model
         'status',
         'payment_info',
         'notes',
+        'receipt_image',
     ];
 
     protected function casts(): array
@@ -25,6 +26,11 @@ class PointRedemption extends Model
             'points_used' => 'integer',
             'rupiah_amount' => 'integer',
         ];
+    }
+
+    public function getReceiptUrlAttribute(): ?string
+    {
+        return $this->receipt_image ? asset('storage/' . $this->receipt_image) : null;
     }
 
     public function user(): BelongsTo

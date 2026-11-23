@@ -16,7 +16,7 @@
     <div class="bg-white p-4 rounded-2xl border border-[#E5E7EB] shadow-xs max-w-md">
         <form action="{{ route('admin.users.index') }}" method="GET" class="flex items-center space-x-2 text-xs">
             <input type="text" name="search" value="{{ $search }}" placeholder="Cari nama atau email peserta..."
-                   class="flex-1 px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#F97316]">
+                   class="flex-1 px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#EC4899]">
             <button type="submit" class="px-4 py-2 rounded-xl font-heading font-bold text-white bg-slate-900 hover:bg-slate-800 transition">
                 Cari
             </button>
@@ -50,7 +50,7 @@
                             $calc = app(\App\Services\PointCalculationService::class);
                             $estRupiah = $calc->convertPointsToRupiah($u->total_points);
                         @endphp
-                        <tr class="hover:bg-orange-50/30 transition">
+                        <tr class="hover:bg-pink-50/30 transition">
                             <td class="px-6 py-4 font-mono text-xs text-gray-700">#{{ $u->id }}</td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center space-x-3">
@@ -63,7 +63,7 @@
                             <td class="px-6 py-4 font-medium text-gray-600 text-xs">
                                 {{ $u->email }}
                             </td>
-                            <td class="px-6 py-4 font-heading font-extrabold text-base text-[#F97316]">
+                            <td class="px-6 py-4 font-heading font-extrabold text-base text-[#EC4899]">
                                 {{ number_format($u->total_points, 0, ',', '.') }} Poin
                             </td>
                             <td class="px-6 py-4 font-heading font-bold text-emerald-600 text-xs">

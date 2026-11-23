@@ -9,12 +9,13 @@
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Poppins', sans-serif;
 
-    --color-bg-primary: #FAF9F6;
+    --color-bg-primary: #FFF5F7;
     --color-bg-card: #FFFFFF;
-    --color-border-card: #E5E7EB;
+    --color-border-card: #FCE7F3;
 
-    --color-brand-orange: #F97316;
-    --color-brand-amber: #F59E0B;
+    --color-brand-pink: #F472B6;
+    --color-brand-rose: #FB7185;
+    --color-brand-accent: #EC4899;
     --color-brand-dark: #1F2937;
 
     --color-status-success: #10B981;
@@ -25,7 +26,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #FAF9F6;
+    background-color: #FFF5F7;
     color: #1F2937;
 }
 
@@ -35,17 +36,17 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 /* Gradient buttons & badges */
 .btn-gradient {
-    background: linear-gradient(135deg, #F97316 0%, #F59E0B 100%);
+    background: linear-gradient(135deg, #F472B6 0%, #FB7185 100%);
     color: #FFFFFF;
     transition: all 0.2s ease-in-out;
 }
 
 .btn-gradient:hover {
-    background: linear-gradient(135deg, #EA580C 0%, #D97706 100%);
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+    background: linear-gradient(135deg, #EC4899 0%, #F43F5E 100%);
+    box-shadow: 0 4px 12px rgba(244, 114, 182, 0.3);
 }
 
 .badge-gradient {
-    background: linear-gradient(135deg, #F97316 0%, #F59E0B 100%);
+    background: linear-gradient(135deg, #F472B6 0%, #FB7185 100%);
     color: #FFFFFF;
 }

@@ -74,43 +74,43 @@
                             <label for="points_used" class="block text-xs font-semibold text-gray-700">
                                 Jumlah Poin yang Ingin Ditukar <span class="text-red-500">*</span>
                             </label>
-                            <button type="button" id="btn_all_points" class="text-xs font-semibold text-[#F97316] hover:underline">
+                            <button type="button" id="btn_all_points" class="text-xs font-semibold text-[#EC4899] hover:underline">
                                 Tukar Semua ({{ $user->total_points }} Poin)
                             </button>
                         </div>
                         <input type="number" id="points_used" name="points_used"
                                value="{{ old('points_used', min(20, $user->total_points)) }}"
                                min="1" max="{{ $user->total_points }}" step="1" required
-                               class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent transition">
+                               class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#EC4899] focus:border-transparent transition">
                         <p class="text-[11px] text-gray-500 mt-1">
                             Maksimal penukaran adalah saldo yang Anda miliki saat ini (<strong>{{ $user->total_points }} Poin</strong>).
                         </p>
                     </div>
 
                     <!-- Dynamic Greedy Calculation Preview Box -->
-                    <div class="p-4 rounded-xl bg-orange-50/50 border border-orange-200">
+                    <div class="p-4 rounded-xl bg-pink-50/50 border border-pink-200">
                         <span class="text-xs font-semibold text-gray-700 block mb-2">Rincian Perhitungan Konversi (Greedy):</span>
                         <div class="grid grid-cols-3 gap-2 text-center text-xs mb-3">
-                            <div class="bg-white p-2 rounded-lg border border-orange-100">
+                            <div class="bg-white p-2 rounded-lg border border-pink-100">
                                 <span class="block text-gray-400 text-[10px]">Pecahan 20 Poin</span>
                                 <span id="calc_p20" class="font-bold text-gray-800 text-sm">0x</span>
                                 <span id="calc_sub20" class="block text-[10px] text-emerald-600 font-semibold">Rp 0</span>
                             </div>
-                            <div class="bg-white p-2 rounded-lg border border-orange-100">
+                            <div class="bg-white p-2 rounded-lg border border-pink-100">
                                 <span class="block text-gray-400 text-[10px]">Pecahan 10 Poin</span>
                                 <span id="calc_p10" class="font-bold text-gray-800 text-sm">0x</span>
                                 <span id="calc_sub10" class="block text-[10px] text-emerald-600 font-semibold">Rp 0</span>
                             </div>
-                            <div class="bg-white p-2 rounded-lg border border-orange-100">
+                            <div class="bg-white p-2 rounded-lg border border-pink-100">
                                 <span class="block text-gray-400 text-[10px]">Pecahan 1 Poin</span>
                                 <span id="calc_p1" class="font-bold text-gray-800 text-sm">0x</span>
                                 <span id="calc_sub1" class="block text-[10px] text-emerald-600 font-semibold">Rp 0</span>
                             </div>
                         </div>
 
-                        <div class="flex items-center justify-between pt-2 border-t border-orange-200/60">
+                        <div class="flex items-center justify-between pt-2 border-t border-pink-200/60">
                             <span class="text-xs font-bold text-gray-700">Total Nilai Rupiah Diterima:</span>
-                            <span id="calc_total" class="font-heading font-extrabold text-base text-[#F97316]">
+                            <span id="calc_total" class="font-heading font-extrabold text-base text-[#EC4899]">
                                 Rp 0
                             </span>
                         </div>
@@ -123,7 +123,7 @@
                         </label>
                         <input type="text" id="payment_info" name="payment_info" value="{{ old('payment_info') }}" required
                                placeholder="Contoh: BCA 1234567890 a/n Budi Santoso atau DANA 08123456789"
-                               class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent transition">
+                               class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#EC4899] focus:border-transparent transition">
                     </div>
 
                     <!-- Catatan Tambahan -->
@@ -131,11 +131,11 @@
                         <label for="notes" class="block text-xs font-semibold text-gray-700 mb-1">Catatan Tambahan (Opsional)</label>
                         <textarea id="notes" name="notes" rows="2"
                                   placeholder="Catatan tambahan untuk admin (opsional)"
-                                  class="w-full px-4 py-2 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#F97316] focus:border-transparent transition">{{ old('notes') }}</textarea>
+                                  class="w-full px-4 py-2 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#EC4899] focus:border-transparent transition">{{ old('notes') }}</textarea>
                     </div>
 
                     <button type="submit"
-                            class="w-full py-3 px-4 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F97316] to-[#F59E0B] hover:opacity-95 shadow transition">
+                            class="w-full py-3 px-4 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F472B6] to-[#FB7185] hover:opacity-95 shadow transition">
                         Ajukan Klaim Pencairan Rupiah
                     </button>
                 </form>
@@ -164,7 +164,7 @@
                 </thead>
                 <tbody class="divide-y divide-[#E5E7EB]">
                     @forelse($redemptions as $item)
-                        <tr class="hover:bg-orange-50/30 transition">
+                        <tr class="hover:bg-pink-50/30 transition">
                             <td class="px-6 py-4 font-mono text-xs text-gray-700">
                                 <span class="font-bold text-[#1F2937]">#{{ $item->id }}</span>
                                 <span class="block text-[11px] text-gray-400">{{ $item->created_at->format('d/m/Y H:i') }}</span>
@@ -194,7 +194,18 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4 text-xs text-gray-600">
-                                {{ $item->notes ?? '-' }}
+                                <div>{{ $item->notes ?? '-' }}</div>
+                                @if($item->receipt_image)
+                                    <div class="mt-1.5">
+                                        <a href="{{ $item->receipt_url }}" target="_blank" class="inline-flex items-center space-x-1 text-[11px] font-semibold text-[#EC4899] hover:underline">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+                                            <span>Lihat Bukti Transfer</span>
+                                        </a>
+                                    </div>
+                                @endif
                             </td>
                         </tr>
                     @empty

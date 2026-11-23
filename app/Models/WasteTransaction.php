@@ -19,6 +19,7 @@ class WasteTransaction extends Model
         'earned_points',
         'status',
         'notes',
+        'image_path',
     ];
 
     protected function casts(): array
@@ -27,6 +28,11 @@ class WasteTransaction extends Model
             'quantity_or_weight' => 'integer',
             'earned_points' => 'integer',
         ];
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        return $this->image_path ? asset('storage/' . $this->image_path) : null;
     }
 
     public function user(): BelongsTo

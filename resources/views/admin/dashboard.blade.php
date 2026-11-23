@@ -17,7 +17,7 @@
             </p>
         </div>
         <div class="flex items-center space-x-3">
-            <a href="{{ route('admin.transactions.index', ['status' => 'pending']) }}" class="px-5 py-2.5 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F97316] to-[#F59E0B] shadow hover:opacity-95 transition flex items-center space-x-2">
+            <a href="{{ route('admin.transactions.index', ['status' => 'pending']) }}" class="px-5 py-2.5 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F472B6] to-[#FB7185] shadow hover:opacity-95 transition flex items-center space-x-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
@@ -72,7 +72,7 @@
         <div class="bg-white p-6 rounded-2xl border border-[#E5E7EB] shadow-xs flex flex-col justify-between">
             <div class="flex items-center justify-between">
                 <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Saldo Poin di Peserta</span>
-                <div class="w-10 h-10 rounded-xl bg-orange-100 text-[#F97316] flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-pink-100 text-[#EC4899] flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
@@ -118,7 +118,7 @@
                     <h2 class="font-heading font-bold text-base text-[#1F2937]">Setoran Menunggu Verifikasi</h2>
                     <p class="text-xs text-gray-500">Tentukan grade kelayakan (A/B/C/D) untuk menambah poin</p>
                 </div>
-                <a href="{{ route('admin.transactions.index', ['status' => 'pending']) }}" class="text-xs font-semibold text-[#F97316] hover:underline">
+                <a href="{{ route('admin.transactions.index', ['status' => 'pending']) }}" class="text-xs font-semibold text-[#EC4899] hover:underline">
                     Semua
                 </a>
             </div>
@@ -135,7 +135,7 @@
                     </thead>
                     <tbody class="divide-y divide-[#E5E7EB]">
                         @forelse($pendingTransactions as $pt)
-                            <tr class="hover:bg-orange-50/30 transition">
+                            <tr class="hover:bg-pink-50/30 transition">
                                 <td class="px-4 py-3">
                                     <span class="font-semibold text-gray-800 block">{{ $pt->user->name }}</span>
                                     <span class="text-[10px] text-gray-400">{{ $pt->created_at->diffForHumans() }}</span>
@@ -148,7 +148,7 @@
                                 </td>
                                 <td class="px-4 py-3 text-right">
                                     <a href="{{ route('admin.transactions.show', $pt) }}"
-                                       class="inline-block px-3 py-1 rounded-lg font-heading font-bold text-[11px] text-white bg-gradient-to-r from-[#F97316] to-[#F59E0B] hover:opacity-95 shadow-xs transition">
+                                       class="inline-block px-3 py-1 rounded-lg font-heading font-bold text-[11px] text-white bg-gradient-to-r from-[#F472B6] to-[#FB7185] hover:opacity-95 shadow-xs transition">
                                         Verifikasi
                                     </a>
                                 </td>
@@ -172,7 +172,7 @@
                     <h2 class="font-heading font-bold text-base text-[#1F2937]">Klaim Pencairan Menunggu Transfer</h2>
                     <p class="text-xs text-gray-500">Permintaan penukaran poin ke Rupiah dari peserta</p>
                 </div>
-                <a href="{{ route('admin.redemptions.index', ['status' => 'pending']) }}" class="text-xs font-semibold text-[#F97316] hover:underline">
+                <a href="{{ route('admin.redemptions.index', ['status' => 'pending']) }}" class="text-xs font-semibold text-[#EC4899] hover:underline">
                     Semua
                 </a>
             </div>
@@ -189,7 +189,7 @@
                     </thead>
                     <tbody class="divide-y divide-[#E5E7EB]">
                         @forelse($pendingRedemptions as $pr)
-                            <tr class="hover:bg-orange-50/30 transition">
+                            <tr class="hover:bg-pink-50/30 transition">
                                 <td class="px-4 py-3">
                                     <span class="font-semibold text-gray-800 block">{{ $pr->user->name }}</span>
                                     <span class="text-[10px] text-gray-400">{{ $pr->payment_info }}</span>
