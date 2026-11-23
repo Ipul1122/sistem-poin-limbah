@@ -34,7 +34,7 @@
                             default => 'bg-red-100 text-red-800 border-red-200',
                         };
                     @endphp
-                    <tr class="hover:bg-orange-50/30 transition">
+                    <tr class="hover:bg-pink-50/30 transition">
                         <td class="px-6 py-4 font-mono font-bold text-gray-800">
                             <span class="inline-flex items-center px-3 py-1 rounded-lg text-xs font-bold border {{ $badgeClass }}">
                                 Grade {{ $gr->grade_code }}
@@ -43,7 +43,7 @@
                         <td class="px-6 py-4 font-semibold text-gray-800">
                             {{ $gr->label }}
                         </td>
-                        <td class="px-6 py-4 font-heading font-extrabold text-base text-[#F97316]">
+                        <td class="px-6 py-4 font-heading font-extrabold text-base text-[#EC4899]">
                             +{{ $gr->bonus_point }} Poin
                         </td>
                         <td class="px-6 py-4 text-xs text-gray-500 font-mono">
@@ -51,7 +51,7 @@
                         </td>
                         <td class="px-6 py-4 text-right">
                             <a href="{{ route('admin.grades.edit', $gr) }}"
-                               class="inline-block px-3 py-1.5 rounded-xl font-heading font-bold text-xs text-[#F97316] bg-orange-50 hover:bg-orange-100 border border-orange-200 transition">
+                               class="inline-block px-3 py-1.5 rounded-xl font-heading font-bold text-xs text-[#EC4899] bg-pink-50 hover:bg-pink-100 border border-pink-200 transition">
                                 Edit Grade
                             </a>
                         </td>

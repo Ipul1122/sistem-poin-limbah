@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use App\Models\PointRedemption;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class PointRedemptionTest extends TestCase
@@ -81,6 +83,34 @@ class PointRedemptionTest extends TestCase
         $redemption->refresh();
         $this->assertEquals('completed', $redemption->status);
         $this->assertStringContainsString('Transfer berhasil', $redemption->notes);
+    }
+
+    public function test_admin_can_upload_receipt_image_when_completing_redemption(): void
+    {
+        Storage::fake('public');
+
+        $redemption = PointRedemption::create([
+            'user_id' => $this->peserta->id,
+            'points_used' => 20,
+            'rupiah_amount' => 1000,
+            'status' => 'pending',
+            'payment_info' => 'GoPay 0812345678',
+        ]);
+
+        $file = UploadedFile::fake()->image('bukti_transfer.png');
+
+        $response = $this->actingAs($this->admin)->post("/admin/redemptions/{$redemption->id}/complete", [
+            'notes' => 'Transfer berhasil via GoPay',
+            'receipt' => $file,
+        ]);
+
+        $response->assertRedirect(route('admin.redemptions.index'));
+
+        $redemption->refresh();
+        $this->assertEquals('completed', $redemption->status);
+        $this->assertNotNull($redemption->receipt_image);
+        Storage::disk('public')->assertExists($redemption->receipt_image);
+        $this->assertNotNull($redemption->receipt_url);
     }
 
     public function test_admin_rejecting_redemption_refunds_points_to_peserta(): void

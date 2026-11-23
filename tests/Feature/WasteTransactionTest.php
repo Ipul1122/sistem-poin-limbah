@@ -7,6 +7,8 @@ use App\Models\WasteCategory;
 use App\Models\WasteGrade;
 use App\Models\WasteTransaction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class WasteTransactionTest extends TestCase
@@ -74,6 +76,27 @@ class WasteTransactionTest extends TestCase
 
         // STRICT: Saldo poin peserta TIDAK BOLEH bertambah sebelum approved
         $this->assertEquals(0, $this->peserta->fresh()->total_points);
+    }
+
+    public function test_peserta_can_upload_waste_image(): void
+    {
+        Storage::fake('public');
+
+        $file = UploadedFile::fake()->image('limbah_botol.jpg');
+
+        $response = $this->actingAs($this->peserta)->post('/peserta/transactions', [
+            'category_id' => $this->botol->id,
+            'quantity_or_weight' => 15,
+            'notes' => 'Botol mineral dengan foto',
+            'image' => $file,
+        ]);
+
+        $response->assertRedirect(route('peserta.transactions.index'));
+
+        $tx = WasteTransaction::where('user_id', $this->peserta->id)->latest()->first();
+        $this->assertNotNull($tx->image_path);
+        Storage::disk('public')->assertExists($tx->image_path);
+        $this->assertNotNull($tx->image_url);
     }
 
     public function test_peserta_cannot_submit_kaleng_below_100_grams(): void

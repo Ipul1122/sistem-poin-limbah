@@ -6,7 +6,7 @@
 @section('content')
 <div class="max-w-xl mx-auto space-y-6">
     <div>
-        <a href="{{ route('admin.categories.index') }}" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-gray-500 hover:text-[#F97316] transition">
+        <a href="{{ route('admin.categories.index') }}" class="inline-flex items-center space-x-1.5 text-xs font-semibold text-gray-500 hover:text-[#EC4899] transition">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
@@ -38,14 +38,14 @@
             <div>
                 <label for="unit_divisor" class="block text-xs font-semibold text-gray-700 mb-1">Pembagi Satuan (Unit Divisor) <span class="text-red-500">*</span></label>
                 <input type="number" id="unit_divisor" name="unit_divisor" value="{{ old('unit_divisor', $category->unit_divisor) }}" required min="1"
-                       class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#F97316] transition">
+                       class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#EC4899] transition">
                 <p class="text-[11px] text-gray-500 mt-1">Contoh: 1 untuk Botol (per 1 pcs), 100 untuk Kaleng (per 100 gram).</p>
             </div>
 
             <div>
                 <label for="base_point" class="block text-xs font-semibold text-gray-700 mb-1">Poin Dasar (Base Point) <span class="text-red-500">*</span></label>
                 <input type="number" id="base_point" name="base_point" value="{{ old('base_point', $category->base_point) }}" required min="1"
-                       class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#F97316] transition">
+                       class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#EC4899] transition">
                 <p class="text-[11px] text-gray-500 mt-1">Jumlah poin dasar yang diperoleh untuk setiap kelipatan pembagi satuan di atas.</p>
             </div>
 
@@ -53,7 +53,7 @@
                 <a href="{{ route('admin.categories.index') }}" class="px-4 py-2 rounded-xl border border-gray-300 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition">
                     Batal
                 </a>
-                <button type="submit" class="px-5 py-2 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F97316] to-[#F59E0B] shadow hover:opacity-95 transition">
+                <button type="submit" class="px-5 py-2 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F472B6] to-[#FB7185] shadow hover:opacity-95 transition">
                     Simpan Perubahan
                 </button>
             </div>

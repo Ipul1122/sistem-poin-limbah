@@ -56,11 +56,22 @@ class PointRedemptionController extends Controller
 
         $validated = $request->validate([
             'notes' => ['nullable', 'string', 'max:500'],
+            'receipt' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+        ], [
+            'receipt.image' => 'Bukti transfer harus berupa file gambar.',
+            'receipt.mimes' => 'Format gambar resi harus JPEG, PNG, JPG, atau WEBP.',
+            'receipt.max' => 'Ukuran gambar resi maksimal 2MB.',
         ]);
+
+        $receiptPath = $redemption->receipt_image;
+        if ($request->hasFile('receipt')) {
+            $receiptPath = $request->file('receipt')->store('receipts', 'public');
+        }
 
         $redemption->update([
             'status' => 'completed',
             'notes' => $validated['notes'] ?? 'Pencairan dana telah ditransfer sesuai data rekening/e-wallet peserta.',
+            'receipt_image' => $receiptPath,
         ]);
 
         return redirect()->route('admin.redemptions.index')

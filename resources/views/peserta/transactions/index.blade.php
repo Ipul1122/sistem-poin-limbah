@@ -13,7 +13,7 @@
         </div>
         <div>
             <a href="{{ route('peserta.transactions.create') }}"
-               class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F97316] to-[#F59E0B] shadow hover:opacity-95 transition">
+               class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl font-heading font-bold text-xs text-white bg-gradient-to-r from-[#F472B6] to-[#FB7185] shadow hover:opacity-95 transition">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
@@ -49,6 +49,7 @@
                 <thead class="bg-gray-50 text-[11px] uppercase tracking-wider text-gray-500 font-semibold border-b border-[#E5E7EB]">
                     <tr>
                         <th class="px-6 py-4">ID / Tanggal</th>
+                        <th class="px-6 py-4">Foto</th>
                         <th class="px-6 py-4">Jenis Limbah</th>
                         <th class="px-6 py-4">Jumlah / Berat</th>
                         <th class="px-6 py-4">Grade Kelayakan</th>
@@ -59,14 +60,25 @@
                 </thead>
                 <tbody class="divide-y divide-[#E5E7EB]">
                     @forelse($transactions as $tx)
-                        <tr class="hover:bg-orange-50/30 transition">
+                        <tr class="hover:bg-pink-50/30 transition">
                             <td class="px-6 py-4 font-mono text-xs text-gray-700">
                                 <span class="font-bold text-[#1F2937]">#{{ $tx->id }}</span>
                                 <span class="block text-[11px] text-gray-400">{{ $tx->created_at->format('d/m/Y H:i') }}</span>
                             </td>
+                            <td class="px-6 py-4">
+                                @if($tx->image_path)
+                                    <a href="{{ $tx->image_url }}" target="_blank" class="block w-12 h-12 rounded-xl overflow-hidden border border-pink-200 hover:scale-105 transition shadow-xs">
+                                        <img src="{{ $tx->image_url }}" alt="Foto #{{ $tx->id }}" class="w-full h-full object-cover">
+                                    </a>
+                                @else
+                                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gray-100 text-gray-400 text-xs">
+                                        -
+                                    </span>
+                                @endif
+                            </td>
                             <td class="px-6 py-4 font-medium text-[#1F2937]">
                                 <span class="inline-flex items-center space-x-1.5">
-                                    <span class="w-2 h-2 rounded-full {{ $tx->category->name === 'Botol' ? 'bg-blue-500' : 'bg-orange-500' }}"></span>
+                                    <span class="w-2 h-2 rounded-full {{ $tx->category->name === 'Botol' ? 'bg-blue-500' : 'bg-pink-500' }}"></span>
                                     <span>{{ $tx->category->name }}</span>
                                 </span>
                             </td>
@@ -129,7 +141,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="px-6 py-12 text-center text-gray-400 text-xs">
+                            <td colspan="8" class="px-6 py-12 text-center text-gray-400 text-xs">
                                 Tidak ada data setoran limbah yang ditemukan.
                             </td>
                         </tr>

@@ -64,6 +64,7 @@ class WasteTransactionController extends Controller
         $validated = $request->validate([
             'category_id' => ['required', 'exists:waste_categories,id'],
             'quantity_or_weight' => ['required', 'integer', 'min:' . $minVal],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
             'notes' => ['nullable', 'string', 'max:500'],
         ], [
             'category_id.required' => 'Pilih kategori limbah.',
@@ -71,8 +72,16 @@ class WasteTransactionController extends Controller
             'quantity_or_weight.required' => 'Jumlah/berat limbah wajib diisi.',
             'quantity_or_weight.integer' => 'Jumlah/berat harus berupa bilangan bulat.',
             'quantity_or_weight.min' => "Jumlah/berat untuk {$category->name} wajib dalam satuan {$unitLabel}.",
+            'image.image' => 'File yang diunggah harus berupa gambar.',
+            'image.mimes' => 'Format gambar yang didukung adalah JPEG, PNG, JPG, atau WEBP.',
+            'image.max' => 'Ukuran gambar maksimal 2MB (2048 KB).',
             'notes.max' => 'Catatan maksimal 500 karakter.',
         ]);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('waste_images', 'public');
+        }
 
         // STRICT: Status awal adalah 'pending', poin didapat = 0, poin saldo TIDAK bertambah
         WasteTransaction::create([
@@ -84,6 +93,7 @@ class WasteTransactionController extends Controller
             'earned_points' => 0,
             'status' => 'pending',
             'notes' => $validated['notes'] ?? null,
+            'image_path' => $imagePath,
         ]);
 
         return redirect()->route('peserta.transactions.index')

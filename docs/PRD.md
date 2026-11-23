@@ -9,12 +9,12 @@ Membangun aplikasi web monolitik berbasis RBAC untuk memfasilitasi pencatatan pe
 1. **Admin**
    - Login/Logout manual menggunakan sesi Laravel.
    - Mengelola master data kategori sampah & parameter poin (CRUD).
-   - Memverifikasi transaksi penukaran sampah dan menentukan grade kelayakan (A/B/C/D).
-   - Mengelola saldo poin dan penukaran poin peserta ke Rupiah.
+   - Memverifikasi transaksi penukaran sampah, meninjau foto kondisi fisik limbah yang disetor, dan menentukan grade kelayakan (A/B/C/D).
+   - Mengelola saldo poin dan penukaran poin peserta ke Rupiah serta melampirkan foto resi/bukti transfer pencairan.
 2. **Peserta**
    - Registrasi & Login/Logout manual.
-   - Mengajukan form penukaran limbah (memilih jenis: Botol atau Kaleng, input jumlah/berat).
-   - Melihat riwayat transaksi, total poin terkumpul, dan melakukan klaim penukaran poin ke Rupiah.
+   - Mengajukan form penukaran limbah (memilih jenis: Botol atau Kaleng, input jumlah/berat, serta mengunggah foto fisik limbah opsional).
+   - Melihat riwayat transaksi, preview foto limbah, total poin terkumpul, dan melakukan klaim penukaran poin ke Rupiah beserta meninjau bukti transfer.
 
 ## 3. Aturan Bisnis & Formula Kalkulasi
 

@@ -49,7 +49,7 @@
                 </thead>
                 <tbody class="divide-y divide-[#E5E7EB]">
                     @forelse($redemptions as $item)
-                        <tr class="hover:bg-orange-50/30 transition">
+                        <tr class="hover:bg-pink-50/30 transition">
                             <td class="px-6 py-4 font-mono text-xs text-gray-700">
                                 <span class="font-bold text-[#1F2937]">#{{ $item->id }}</span>
                                 <span class="block text-[11px] text-gray-400">{{ $item->created_at->format('d/m/Y H:i') }}</span>
@@ -84,7 +84,7 @@
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{ route('admin.redemptions.show', $item) }}"
-                                   class="inline-block px-3 py-1.5 rounded-xl font-heading font-bold text-xs {{ $item->status === 'pending' ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-xs hover:opacity-95' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }} transition">
+                                   class="inline-block px-3 py-1.5 rounded-xl font-heading font-bold text-xs {{ $item->status === 'pending' ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-xs hover:opacity-95' : 'bg-gray-100 text-gray-700 hover:bg-gray-200' }} transition">
                                     {{ $item->status === 'pending' ? 'Proses Transfer' : 'Detail' }}
                                 </a>
                             </td>

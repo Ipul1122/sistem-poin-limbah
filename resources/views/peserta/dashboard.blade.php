@@ -6,19 +6,19 @@
 @section('content')
 <div class="space-y-8">
     <!-- Welcome Card -->
-    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#F97316] to-[#F59E0B] p-6 md:p-8 text-white shadow-lg">
+    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#F472B6] to-[#FB7185] p-6 md:p-8 text-white shadow-lg">
         <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
                 <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-semibold backdrop-blur-xs mb-3">
                     Halo, {{ $user->name }} 👋
                 </span>
                 <h1 class="font-heading font-extrabold text-2xl md:text-3xl tracking-tight">Selamat Datang di EcoPoint!</h1>
-                <p class="text-orange-100 text-sm mt-2 max-w-xl">
+                <p class="text-pink-100 text-sm mt-2 max-w-xl">
                     Tukarkan limbah <strong>Botol</strong> (satuan pcs) dan <strong>Kaleng</strong> (satuan gram) Anda untuk mengumpulkan poin dan menukarkannya langsung menjadi uang Rupiah.
                 </p>
             </div>
             <div class="flex flex-wrap gap-3">
-                <a href="{{ route('peserta.transactions.create') }}" class="px-5 py-2.5 rounded-xl bg-white text-[#F97316] font-heading font-bold text-sm shadow hover:bg-orange-50 transition-all flex items-center space-x-2">
+                <a href="{{ route('peserta.transactions.create') }}" class="px-5 py-2.5 rounded-xl bg-white text-[#EC4899] font-heading font-bold text-sm shadow hover:bg-pink-50 transition-all flex items-center space-x-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                     </svg>
@@ -43,7 +43,7 @@
         <div class="bg-white p-6 rounded-2xl border border-[#E5E7EB] shadow-xs flex flex-col justify-between">
             <div class="flex items-center justify-between">
                 <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Saldo Poin Saat Ini</span>
-                <div class="w-10 h-10 rounded-xl bg-orange-100 text-[#F97316] flex items-center justify-center">
+                <div class="w-10 h-10 rounded-xl bg-pink-100 text-[#EC4899] flex items-center justify-center">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
@@ -124,8 +124,8 @@
     <!-- Informasi Formula & Skema Poin -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <div class="bg-white p-5 rounded-2xl border border-[#E5E7EB] shadow-xs">
-            <div class="flex items-center space-x-2 text-[#F97316] font-heading font-bold text-sm mb-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#F97316]"></span>
+            <div class="flex items-center space-x-2 text-[#EC4899] font-heading font-bold text-sm mb-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EC4899]"></span>
                 <h3>Poin Dasar (Base Point)</h3>
             </div>
             <ul class="text-xs text-gray-600 space-y-1.5">
@@ -168,7 +168,7 @@
                 <h2 class="font-heading font-bold text-lg text-[#1F2937]">Riwayat Setoran Terbaru</h2>
                 <p class="text-xs text-gray-500">5 transaksi setoran limbah terakhir Anda</p>
             </div>
-            <a href="{{ route('peserta.transactions.index') }}" class="text-xs font-semibold text-[#F97316] hover:underline flex items-center space-x-1">
+            <a href="{{ route('peserta.transactions.index') }}" class="text-xs font-semibold text-[#EC4899] hover:underline flex items-center space-x-1">
                 <span>Lihat Semua</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -190,14 +190,14 @@
                 </thead>
                 <tbody class="divide-y divide-[#E5E7EB]">
                     @forelse($recentTransactions as $tx)
-                        <tr class="hover:bg-orange-50/40 transition">
+                        <tr class="hover:bg-pink-50/40 transition">
                             <td class="px-6 py-4 font-mono text-xs text-gray-700">
                                 <span class="font-bold text-[#1F2937]">#{{ $tx->id }}</span>
                                 <span class="block text-[11px] text-gray-400">{{ $tx->created_at->format('d M Y, H:i') }}</span>
                             </td>
                             <td class="px-6 py-4 font-medium text-[#1F2937]">
                                 <span class="inline-flex items-center space-x-1.5">
-                                    <span class="w-2 h-2 rounded-full {{ $tx->category->name === 'Botol' ? 'bg-blue-500' : 'bg-orange-500' }}"></span>
+                                    <span class="w-2 h-2 rounded-full {{ $tx->category->name === 'Botol' ? 'bg-blue-500' : 'bg-pink-500' }}"></span>
                                     <span>{{ $tx->category->name }}</span>
                                 </span>
                             </td>

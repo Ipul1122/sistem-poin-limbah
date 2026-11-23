@@ -13,8 +13,8 @@
     </div>
 
     <!-- Alert Banner -->
-    <div class="p-4 rounded-xl bg-orange-50/50 border border-orange-200 text-xs text-orange-950 flex items-start space-x-3">
-        <svg class="w-5 h-5 text-[#F97316] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="p-4 rounded-xl bg-pink-50/50 border border-pink-200 text-xs text-pink-950 flex items-start space-x-3">
+        <svg class="w-5 h-5 text-[#EC4899] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <div>
@@ -39,7 +39,7 @@
             </thead>
             <tbody class="divide-y divide-[#E5E7EB]">
                 @foreach($categories as $cat)
-                    <tr class="hover:bg-orange-50/30 transition">
+                    <tr class="hover:bg-pink-50/30 transition">
                         <td class="px-6 py-4 font-mono text-xs text-gray-700">#{{ $cat->id }}</td>
                         <td class="px-6 py-4 font-heading font-bold text-gray-800">
                             {{ $cat->name }}
@@ -50,7 +50,7 @@
                         <td class="px-6 py-4 font-semibold text-gray-800">
                             {{ $cat->unit_divisor }} {{ $cat->unit_type }}
                         </td>
-                        <td class="px-6 py-4 font-heading font-bold text-[#F97316]">
+                        <td class="px-6 py-4 font-heading font-bold text-[#EC4899]">
                             {{ $cat->base_point }} Poin
                         </td>
                         <td class="px-6 py-4 text-xs font-mono text-gray-500">
@@ -58,7 +58,7 @@
                         </td>
                         <td class="px-6 py-4 text-right">
                             <a href="{{ route('admin.categories.edit', $cat) }}"
-                               class="inline-block px-3 py-1.5 rounded-xl font-heading font-bold text-xs text-[#F97316] bg-orange-50 hover:bg-orange-100 border border-orange-200 transition">
+                               class="inline-block px-3 py-1.5 rounded-xl font-heading font-bold text-xs text-[#EC4899] bg-pink-50 hover:bg-pink-100 border border-pink-200 transition">
                                 Edit Parameter
                             </a>
                         </td>

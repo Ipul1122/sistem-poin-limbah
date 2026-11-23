@@ -46,6 +46,8 @@ erDiagram
         integer quantity_or_weight "Jumlah pcs atau berat gram"
         integer earned_points "Total poin didapat"
         enum status "pending, approved, rejected"
+        string image_path "Foto fisik limbah (nullable)"
+        text notes "Catatan (nullable)"
         timestamps created_at_updated_at
     }
 
@@ -54,6 +56,12 @@ erDiagram
         bigint user_id FK
         integer points_used
         integer rupiah_amount
-        enum status "pending, completed"
+        enum status "pending, completed, rejected"
+        string receipt_image "Bukti resi transfer (nullable)"
+        string payment_info "Data rekening / e-wallet"
+        text notes "Catatan (nullable)"
         timestamps created_at_updated_at
     }
+```
+
+```

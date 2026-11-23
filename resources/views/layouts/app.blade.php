@@ -14,7 +14,7 @@
     <!-- Heroicons / FontAwesome alternative (SVG inline or CDN) -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-[#FAF9F6] text-[#1F2937] min-h-screen flex flex-col font-['Poppins']">
+<body class="bg-[#FFF5F7] text-[#1F2937] min-h-screen flex flex-col font-['Poppins']">
 
     <div class="flex flex-1 min-h-screen">
         <!-- Sidebar -->
@@ -22,13 +22,13 @@
             <!-- Brand Logo -->
             <div class="h-16 flex items-center px-6 border-b border-[#E5E7EB]">
                 <a href="{{ url('/') }}" class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#F97316] to-[#F59E0B] flex items-center justify-center text-white shadow-md">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#F472B6] to-[#FB7185] flex items-center justify-center text-white shadow-md">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
                     </div>
                     <div>
-                        <span class="font-heading font-bold text-lg text-[#1F2937] tracking-tight">Eco<span class="text-[#F97316]">Point</span></span>
+                        <span class="font-heading font-bold text-lg text-[#1F2937] tracking-tight">Eco<span class="text-[#EC4899]">Point</span></span>
                         <span class="block text-[10px] text-gray-400 font-medium tracking-wider uppercase">Waste To Point</span>
                     </div>
                 </a>
@@ -43,7 +43,7 @@
                     </div>
 
                     <a href="{{ route('admin.dashboard') }}"
-                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.dashboard') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.dashboard') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                         </svg>
@@ -51,7 +51,7 @@
                     </a>
 
                     <a href="{{ route('admin.transactions.index') }}"
-                       class="flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.transactions.*') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.transactions.*') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <div class="flex items-center space-x-3">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
@@ -62,12 +62,12 @@
                             $pendingTxCount = \App\Models\WasteTransaction::where('status', 'pending')->count();
                         @endphp
                         @if($pendingTxCount > 0)
-                            <span class="px-2 py-0.5 text-xs font-semibold rounded-full {{ request()->routeIs('admin.transactions.*') ? 'bg-white text-[#F97316]' : 'bg-[#F59E0B] text-white' }}">{{ $pendingTxCount }}</span>
+                            <span class="px-2 py-0.5 text-xs font-semibold rounded-full {{ request()->routeIs('admin.transactions.*') ? 'bg-white text-[#EC4899]' : 'bg-[#F59E0B] text-white' }}">{{ $pendingTxCount }}</span>
                         @endif
                     </a>
 
                     <a href="{{ route('admin.redemptions.index') }}"
-                       class="flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.redemptions.*') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center justify-between px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.redemptions.*') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <div class="flex items-center space-x-3">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -78,7 +78,7 @@
                             $pendingRedCount = \App\Models\PointRedemption::where('status', 'pending')->count();
                         @endphp
                         @if($pendingRedCount > 0)
-                            <span class="px-2 py-0.5 text-xs font-semibold rounded-full {{ request()->routeIs('admin.redemptions.*') ? 'bg-white text-[#F97316]' : 'bg-red-500 text-white' }}">{{ $pendingRedCount }}</span>
+                            <span class="px-2 py-0.5 text-xs font-semibold rounded-full {{ request()->routeIs('admin.redemptions.*') ? 'bg-white text-[#EC4899]' : 'bg-red-500 text-white' }}">{{ $pendingRedCount }}</span>
                         @endif
                     </a>
 
@@ -87,7 +87,7 @@
                     </div>
 
                     <a href="{{ route('admin.categories.index') }}"
-                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.categories.*') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.categories.*') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                         </svg>
@@ -95,7 +95,7 @@
                     </a>
 
                     <a href="{{ route('admin.grades.index') }}"
-                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.grades.*') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.grades.*') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                         </svg>
@@ -103,7 +103,7 @@
                     </a>
 
                     <a href="{{ route('admin.users.index') }}"
-                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.users.*') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.users.*') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
@@ -116,7 +116,7 @@
                     </div>
 
                     <a href="{{ route('peserta.dashboard') }}"
-                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('peserta.dashboard') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('peserta.dashboard') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                         </svg>
@@ -124,7 +124,7 @@
                     </a>
 
                     <a href="{{ route('peserta.transactions.create') }}"
-                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('peserta.transactions.create') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('peserta.transactions.create') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -132,7 +132,7 @@
                     </a>
 
                     <a href="{{ route('peserta.transactions.index') }}"
-                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('peserta.transactions.index') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('peserta.transactions.index') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                         </svg>
@@ -140,7 +140,7 @@
                     </a>
 
                     <a href="{{ route('peserta.redemptions.index') }}"
-                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('peserta.redemptions.*') ? 'bg-gradient-to-r from-[#F97316] to-[#F59E0B] text-white shadow-sm' : 'text-gray-600 hover:bg-orange-50 hover:text-[#F97316]' }}">
+                       class="flex items-center space-x-3 px-3 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('peserta.redemptions.*') ? 'bg-gradient-to-r from-[#F472B6] to-[#FB7185] text-white shadow-sm' : 'text-gray-600 hover:bg-pink-50 hover:text-[#EC4899]' }}">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
@@ -150,7 +150,7 @@
             </div>
 
             <!-- User Info & Logout Button -->
-            <div class="p-4 border-t border-[#E5E7EB] bg-[#FAF9F6]">
+            <div class="p-4 border-t border-[#E5E7EB] bg-[#FFF5F7]">
                 @if(Auth::check())
                     <div class="flex items-center space-x-3 mb-3">
                         <div class="w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm">
@@ -187,9 +187,9 @@
 
                 <div class="flex items-center space-x-4">
                     @if(Auth::check() && Auth::user()->isPeserta())
-                        <div class="flex items-center space-x-2 bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 px-3.5 py-1.5 rounded-full">
+                        <div class="flex items-center space-x-2 bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200 px-3.5 py-1.5 rounded-full">
                             <span class="text-xs text-gray-600 font-medium">Saldo Poin:</span>
-                            <span class="font-heading font-bold text-sm text-[#F97316]">{{ number_format(Auth::user()->total_points, 0, ',', '.') }}</span>
+                            <span class="font-heading font-bold text-sm text-[#EC4899]">{{ number_format(Auth::user()->total_points, 0, ',', '.') }}</span>
                             <span class="text-[11px] text-gray-500">Poin</span>
                         </div>
                     @endif
